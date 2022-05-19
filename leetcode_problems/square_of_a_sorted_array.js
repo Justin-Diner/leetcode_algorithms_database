@@ -24,7 +24,7 @@
             right--;
         }
         else{
-            squareArray[pointer] = nums[left]**2; /
+            squareArray[pointer] = nums[left]**2; 
             left++;
         } 
     }
