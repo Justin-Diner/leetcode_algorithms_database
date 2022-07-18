@@ -226,13 +226,18 @@ const caesar_cipher = (str, num) => {
 	let alphabet = "abcdefghijklmnopqrstuvwxyz";
 
 	for (let letter of str) {
-		let firstIndex = alphabet.indexOf(letter);
-		let nextIndex = alphabet.indexOf(letter) + num;
-		let nextChar = alphabet[nextIndex % 26];
-		console.log(nextChar);
-		answer + alphabet[nextChar];
+		let firstIndex = alphabet.indexOf(letter); //index1
+		let nextIndex = firstIndex + num; //index2
+		let finalIndex = 0;
+		if (nextIndex > 25) {
+			finalIndex = alphabet.indexOf(alphabet[nextIndex % 26]);
+		} else {
+			finalIndex = alphabet.indexOf(alphabet[nextIndex]);
+		}
+		answer += alphabet[finalIndex];
 	}
 	return answer;
 }
 
 console.log(caesar_cipher("apple", 1));
+console.log(caesar_cipher("bootcamp", 2)); // "dqqvecor");
