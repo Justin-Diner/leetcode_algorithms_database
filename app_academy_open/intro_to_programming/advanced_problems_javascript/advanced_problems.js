@@ -226,8 +226,8 @@ const caesar_cipher = (str, num) => {
 	let alphabet = "abcdefghijklmnopqrstuvwxyz";
 
 	for (let letter of str) {
-		let firstIndex = alphabet.indexOf(letter); //index1
-		let nextIndex = firstIndex + num; //index2
+		let firstIndex = alphabet.indexOf(letter); 
+		let nextIndex = firstIndex + num; 
 		let finalIndex = 0;
 		if (nextIndex > 25) {
 			finalIndex = alphabet.indexOf(alphabet[nextIndex % 26]);
@@ -241,3 +241,52 @@ const caesar_cipher = (str, num) => {
 
 console.log(caesar_cipher("apple", 1));
 console.log(caesar_cipher("bootcamp", 2)); // "dqqvecor");
+
+// Vowel Cipher 
+const vowel_cipher = (string) => {
+	let answer = "";
+	let vowels = "aeiou";
+
+	for (let i = 0; i < string.length; i++) {
+		if (vowels.includes(string[i])) {
+			let index = vowels.indexOf(string[i]);
+			let newIndex = (index + 1) % 5;
+			answer += vowels[newIndex] ;
+		} else {
+			answer += string[i];
+		}
+	}
+	return answer;
+}
+
+console.log(vowel_cipher("bootcamp")); // buutcemp
+console.log(vowel_cipher("paper cup")); //  pepir cap
+
+// Double Letter Count 
+const double_letter_count = (string) => {
+	let count = 0;
+
+	for (let i = 0; i < string.length; i++) {
+		if (string[i + 1] == string[i]) {
+			count++;
+		}
+	}
+	return count; 
+}
+
+console.log(double_letter_count("the jeep rolled down the hill")); // 3
+console.log(double_letter_count("bootcamp")); // 1
+
+//Adjacent Sum
+const adjacent_sum = (nums) => {
+	let answer = [];
+
+	for (let i = 1; i < nums.length; i ++) {
+		let next = nums[i] + nums[i - 1];
+		answer.push(next);
+	}
+	return answer;
+}
+
+console.log(adjacent_sum([3, 7, 2, 11])); // [10, 9, 13], because [ 3+7, 7+2, 2+11 ]
+console.log(adjacent_sum([2, 5, 1, 9, 2, 4])); // [7, 6, 10, 11, 6], because [2+5, 5+1, 1+9, 9+2, 2+4]
