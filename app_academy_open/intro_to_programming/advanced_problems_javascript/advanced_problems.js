@@ -290,3 +290,27 @@ const adjacent_sum = (nums) => {
 
 console.log(adjacent_sum([3, 7, 2, 11])); // [10, 9, 13], because [ 3+7, 7+2, 2+11 ]
 console.log(adjacent_sum([2, 5, 1, 9, 2, 4])); // [7, 6, 10, 11, 6], because [2+5, 5+1, 1+9, 9+2, 2+4]
+
+//Pyramid_sum
+
+const pyramid_sum = (base) => {
+	let pyramid = [base];
+
+	while (pyramid.length < base.length) { 
+	 	pyramid.unshift(pyramid_row(pyramid[0]));
+	}
+	return pyramid;
+}
+
+const pyramid_row = (row) => {
+	let nextRow = [];
+	for (let i = 1; i < row.length; i++) {
+		let nextNumber = row[i] + row[i-1];
+		nextRow.push(nextNumber);
+	}
+	return nextRow;
+}
+
+
+console.log(pyramid_sum([1, 4, 6])); // [[15], [5, 10], [1, 4, 6]]
+console.log(pyramid_sum([3, 7, 2, 11])); // [[41], [19, 22], [10, 9, 13], [3, 7, 2, 11]]
