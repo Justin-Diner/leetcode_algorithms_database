@@ -314,3 +314,28 @@ const pyramid_row = (row) => {
 
 console.log(pyramid_sum([1, 4, 6])); // [[15], [5, 10], [1, 4, 6]]
 console.log(pyramid_sum([3, 7, 2, 11])); // [[41], [19, 22], [10, 9, 13], [3, 7, 2, 11]]
+
+const all_else_equal = (nums) => {
+	answer = 0;
+
+	for (let num of nums) {
+		if (num == all_else_target(nums)) {
+			return num
+		}
+	}
+	return null;
+} 
+
+const all_else_target = (nums) => {
+	let total = 0;
+
+	for (let num of nums) {
+		total += num;
+	}
+	let target = total /2
+	return target 
+}
+
+console.log(all_else_equal([2, 4, 3, 10, 1])); // 10
+console.log(all_else_equal([6, 3, 5, -9, 1])); // 3
+console.log(all_else_equal([1, 2, 3, 4])); // 3
